@@ -1,4 +1,9 @@
-import numpy as np
+import http.server
+import socketserver
 
-a = np.zeros((8,8)) #keep it small
-print(a)
+PORT = 1111
+Handler = http.server.SimpleHTTPRequestHandler
+
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print("serving at port", PORT)
+    httpd.serve_forever()
