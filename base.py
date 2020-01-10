@@ -1,8 +1,13 @@
 import http.server
 import socketserver
 
-PORT = 1111
-Handler = http.server.SimpleHTTPRequestHandler
+PORT = 80
+DIRECTORY = "C:\\Users\\yuliy\\Documents\\HTML\\hiking_website"
+
+#Handler = http.server.SimpleHTTPRequestHandler
+class Handler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=DIRECTORY, **kwargs)
 
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print("serving at port", PORT)
