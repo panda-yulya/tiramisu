@@ -1,3 +1,5 @@
+import random
+
 class Panda:
     all_pandas = []
     def __init__(self, name):
@@ -20,6 +22,26 @@ class Koala:
     
     def fressen(self, food_mass):
         self.weight = self.weight + food_mass/4
+
+class Snake:
+    def __init__(self, given_name):
+        self.name = given_name
+        self.l = (random.random() + 1)/2 * 3.14
+
+    def fressen(self, food_mass):
+        self.l = self.l + food_mass/10
+
+    def __str__(self):
+        s = "="
+        s = s*int(self.l*10)
+        return self.name+"  <<"+s+"§--´"
+
+pipi = Snake("PiPi")
+pibi = Snake("PiBi")
+print(pipi)
+pipi.fressen(3)
+print(pipi)
+
 
 koala_1 = Koala("Koala 1")
 print(koala_1.weight)
