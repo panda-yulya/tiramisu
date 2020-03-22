@@ -1,25 +1,34 @@
 import http.server
 import socketserver
+import os
 
 PORT = 80
 
+program_dir = os.path.dirname(os.path.realpath(__file__))
+
 def read_image():
     i = None
-    with open("C:\\Users\\yuliy\\Documents\\dev\\tiramisu\\iam.jpg", "rb") as f:
+    image_path = os.path.join(program_dir, "iam.jpg")
+    with open(image_path, "rb") as f:
         i = f.read()
     return i    
+
+
+def read_text_file():
+    t = None
+    text_path = os.path.join(program_dir, "main_page.html")
+    with open(text_path, "rt") as f:
+        t = f.read()
+    return t.encode()  
 
 class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
-        #img = read_image()
-        text = b"""<html>
-        Hi, Pavel
-        <img src="iam.jpg">
-        </html>"""
+        
         if self.path == "/":
             self.send_response(200)
             self.end_headers()
+            text = read_text_file()
             self.wfile.write(text) 
         elif self.path == "/iam.jpg":
             self.send_response(200)
