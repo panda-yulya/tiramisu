@@ -5,21 +5,17 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<p id="demo">Hi, Pavel</p>
-
-		<button type="button" onclick="document.getElementById('demo').innerHTML = 'Servus, Pavel!'">Click Me!</button>
-		
-		<p><img src="iam.jpg"></p>
-		
+		<p id = "demo">Hi, Pavel</p>
 		<script>
-		
-		function my_function() {
-			var message = "Heute werden wir gebackene Rippen zum Abendessen essen, oder?"; 
-			return console.log(message);
-		}
-		
-		my_function();
-
+			function my_function() {
+				var message = "Heute werden wir gebackene Rippen zum Abendessen essen, oder?"; 
+				console.log(message);
+				document.getElementById("demo").innerHTML = "Servus, Pavel!";
+			}
 		</script>
+		<button type = "button" onclick = "my_function()">Click Me!</button>
+		<p><img src = "iam.jpg"></p>
+		
+		
 	</body>
 </html>
