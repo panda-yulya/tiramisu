@@ -6,9 +6,9 @@ PORT = 80
 
 program_dir = os.path.dirname(os.path.realpath(__file__))
 
-def read_image():
+def read_image(image_name):
     i = None
-    image_path = os.path.join(program_dir, "iam.jpg")
+    image_path = os.path.join(program_dir, image_name)
     with open(image_path, "rb") as f:
         i = f.read()
     return i    
@@ -33,12 +33,17 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         elif self.path == "/iam.jpg":
             self.send_response(200)
             self.end_headers()
-            img = read_image()
+            img = read_image("iam.jpg")
+            self.wfile.write(img)
+        elif self.path == "/iam_1.jpg":
+            self.send_response(200)
+            self.end_headers()
+            img = read_image("iam_1.jpg")
             self.wfile.write(img)
         elif self.path == "/favicon.ico":
             self.send_response(200)
             self.end_headers()
-            img = read_image()
+            img = read_image("iam.jpg")
             self.wfile.write(img)
         else:
             self.send_response(404)
