@@ -5,15 +5,23 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<p id = "demo">Hi, Pavel</p>
 		<script>
+			function my_function_2() {
+				var x = document.getElementById("name").value;
+				document.getElementById("demo").innerHTML = "Servus, " + x + "!";				
+			}
 			function my_function() {
 				var message = "Heute werden wir gebackene Rippen zum Abendessen essen, oder?"; 
 				console.log(message);
 				document.getElementById("demo").innerHTML = "Servus, Pavel!";
 				document.getElementById("image").src = "iam_1.jpg";
 			}
+		//function
 		</script>
+		<p>
+		Enter your name: <input type="text" id="name" onchange="my_function_2()">
+		</p>
+		<p id = "demo">Hi, people!</p>
 		<button type = "button" onclick = "my_function()">Click Me!</button>
 		<p>
 			<img id = "image" src = "iam.jpg">
